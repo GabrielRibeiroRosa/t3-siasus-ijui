@@ -171,7 +171,7 @@ AREAS = [  # a primeira regra que combinar define a área
     ("Oncologia", "Procedimento", r"QUIMIOTERAPIA|RADIOTERAPIA|HORMONIOTERAPIA|BRAQUITERAPIA|BETATERAPIA|ONCOLOG"),
     ("Saúde mental", "Ocupacao", r"(?i)psiquiatr|psicolog"),
     ("Saúde mental", "Estabelecimento", r"CAPS|PSICOSSOCIAL"),
-    ("Medicamentos", "Procedimento", r"\(POR (COMPRIMIDO|CAPSULA|FRASCO|AMPOLA|SERINGA|ADESIVO|DRAGEA|SACHE|TUBO|BISNAGA|FRASCO-AMPOLA)|\d+ ?(MG|MCG|UI)\b"),
+    ("Medicamentos", "Procedimento", r"\(POR (?:COMPRIMIDO|CAPSULA|FRASCO|AMPOLA|SERINGA|ADESIVO|DRAGEA|SACHE|TUBO|BISNAGA|FRASCO-AMPOLA)|\d+ ?(?:MG|MCG|UI)\b"),
     ("Exames de imagem", "Procedimento", r"RADIOGRAFIA|ULTRASSONOGRAFIA|TOMOGRAFIA|RESSONANCIA|CINTILOGRAFIA|MAMOGRAFIA|ECOCARDIOGRAFIA|DENSITOMETRIA"),
     ("Exames laboratoriais", "Procedimento", r"^DOSAGEM|^HEMOGRAMA|^PESQUISA DE|^DETERMINACAO|^CONTAGEM|^ANALISE|^CULTURA|^EXAME|^ANTIBIOGRAMA|^TESTE"),
     ("Consultas e atendimentos", "Procedimento", r"^CONSULTA|^ATENDIMENTO|^ACOMPANHAMENTO|^ADMINISTRACAO"),
@@ -280,7 +280,7 @@ top_cid
 # %%
 GRUPOS_CID = {
     "Hipertensão (I10-I15)": r"^I1[0-5]", "Diabetes (E10-E14)": r"^E1[0-4]",
-    "Neoplasias (C00-D48)": r"^(C|D[0-3]|D4[0-8])", "Transtornos mentais (F00-F99)": r"^F",
+    "Neoplasias (C00-D48)": r"^(?:C|D[0-3]|D4[0-8])", "Transtornos mentais (F00-F99)": r"^F",
     "Doenças do olho (H00-H59)": r"^H[0-5]", "Doenças do ouvido (H60-H95)": r"^H[6-9]",
     "Doença renal crônica (N18)": r"^N18",
 }
@@ -382,7 +382,7 @@ print("Estabelecimentos considerados:", posto.Estabelecimento.unique().tolist())
 atencao_basica
 
 # %%
-cronicas = com_cid[com_cid.pa_cidpri.str.contains(r"^(I1[0-5]|E1[0-4])")].copy()
+cronicas = com_cid[com_cid.pa_cidpri.str.contains(r"^(?:I1[0-5]|E1[0-4])")].copy()
 cronicas["Condicao"] = cronicas.pa_cidpri.str.startswith("I").map({True: "Hipertensão", False: "Diabetes"})
 doencas_cronicas = cronicas.pivot_table(index=["Condicao", "Estabelecimento"], columns="Periodo",
                                         values="pa_qtdpro", aggfunc="sum", fill_value=0)
