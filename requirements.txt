@@ -1,0 +1,8 @@
+pandas
+mysql-connector-python
+jupyter
+matplotlib
+seaborn
+plotly
+pyarrow
+nbconvert

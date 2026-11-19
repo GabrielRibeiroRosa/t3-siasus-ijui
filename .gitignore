@@ -1,0 +1,9 @@
+*.dbc
+*.dbf
+*.csv
+!resultados/**/*.csv
+*.zip
+venv/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
