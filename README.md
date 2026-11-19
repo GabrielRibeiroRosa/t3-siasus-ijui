@@ -1,7 +1,8 @@
 # T3 - Análise de Dados do SIASUS para a Gestão Municipal de Saúde de Ijuí/RS
 
-Trabalho da disciplina Programação para Ciência de Dados. Etapas concluídas: Etapa 1 (construção e carga
-do banco de dados MySQL) e Etapa 2 (exploração, limpeza e análises com Pandas a partir da VIEW `pa_ijui`).
+Trabalho da disciplina Programação para Ciência de Dados, em três etapas: Etapa 1 (construção e carga do
+banco de dados MySQL), Etapa 2 (exploração, limpeza e análises com Pandas a partir da VIEW `pa_ijui`) e
+Etapa 3 (visualização com Matplotlib e Seaborn e interpretação dos resultados).
 
 ## Fontes e período
 
@@ -29,10 +30,10 @@ Arquivos baixados em 05/11/2026. O DATASUS pode republicá-los.
 
 ```
 sql/        scripts do banco dbsia, na ordem de execução
-scripts/    conversão dos DBF em CSV e geração do notebook
-analise/    código da Etapa 2 (lê a VIEW pa_ijui)
-notebooks/  notebook da Etapa 2 com as saídas
-resultados/ tabelas geradas pela Etapa 2 (CSV) e base preparada para a Etapa 3 (Parquet)
+scripts/    conversão dos DBF em CSV e geração dos notebooks
+analise/    código da Etapa 2 (lê a VIEW pa_ijui) e da Etapa 3 (gráficos)
+notebooks/  notebooks das Etapas 2 e 3 com as saídas
+resultados/ etapa2: tabelas (CSV) e base preparada (Parquet); etapa3: gráficos (PNG)
 ```
 
 ## Como executar
@@ -75,6 +76,13 @@ jupyter notebook
 
 O mesmo código está em `analise/etapa2_analise.py`, que pode ser executado direto
 (`python analise/etapa2_analise.py`) e grava as tabelas em `resultados/etapa2/`.
+
+### Etapa 3 - visualização
+
+Depois da Etapa 2, abra `notebooks/etapa3_visualizacao.ipynb` e execute todas as células. Ele lê
+`resultados/etapa2/pa_ijui_preparado.parquet` (não precisa do MySQL) e grava os 14 gráficos em
+`resultados/etapa3/`. Cada gráfico responde a uma pergunta da análise e vem seguido da interpretação; a
+última seção reúne as conclusões para a gestão municipal.
 
 ## Resultado da carga
 
