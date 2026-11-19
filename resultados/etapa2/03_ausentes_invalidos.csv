@@ -1,0 +1,8 @@
+﻿,registros,percentual
+Diagnostico nulo (CID inexistente na tabela CID-10),24,0.011747372749032066
+Procedimento nulo (código fora da tabela),0,0.0
+pa_cidpri = '0000' (CID não informado),137438,67.27230899506121
+"idade > 120 (idade inválida, geralmente 999)",2774,1.3578005002422895
+pa_sexo diferente de M/F,10649,5.212407183518436
+MunicipioPaciente = 'INVALIDO' (residência ignorada),10649,5.212407183518436
+valor aprovado maior que o apresentado,354,0.17327374804822296
